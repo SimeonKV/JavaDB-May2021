@@ -1,0 +1,34 @@
+00. Create Database
+You now know how to create database using the GUI of the Workbench. 
+Now it's time to create it using SQL queries. In that task (and the several following it)
+you will be required to create the database from the previous exercise using only SQL queries. 
+Firstly, just create new database named minions.
+
+
+QUERY ->>> 
+CREATE DATABASE `minions`;
+
+
+
+
+01.Create Tables
+In the newly created database Minions add table minions (id, name, age). 
+Then add new table towns (town_id, name). Set id and town_id columns of both tables to be primary key as constraint, 
+id's must be auto increment. Submit yours create table queries in Judge together for both tables (one after another separated by ";") 
+as Run queries & check DB.
+
+
+QUERY ->>> 
+USE `minions`;
+
+CREATE TABLE `minions`(
+`id` INT AUTO_INCREMENT PRIMARY KEY,
+`name` VARCHAR(25) NOT NULL,
+`age` INT 
+);
+
+
+CREATE TABLE `towns`(
+`town_id` INT AUTO_INCREMENT PRIMARY KEY,
+`name` VARCHAR(25) NOT NULL
+);
