@@ -1,4 +1,5 @@
 00. Create Database
+
 You now know how to create database using the GUI of the Workbench. 
 Now it's time to create it using SQL queries. In that task (and the several following it)
 you will be required to create the database from the previous exercise using only SQL queries. 
@@ -12,6 +13,7 @@ CREATE DATABASE `minions`;
 
 
 01.Create Tables
+
 In the newly created database Minions add table minions (id, name, age). 
 Then add new table towns (town_id, name). Set id and town_id columns of both tables to be primary key as constraint, 
 id's must be auto increment. Submit yours create table queries in Judge together for both tables (one after another separated by ";") 
@@ -32,3 +34,35 @@ CREATE TABLE `towns`(
 `town_id` INT AUTO_INCREMENT PRIMARY KEY,
 `name` VARCHAR(25) NOT NULL
 );
+
+
+02.Alter Minions Table
+
+Before continuing with the next assignments, rename the town_id to id using Workbench's GUI.Do not submit this query on the Judge System.
+Change the structure of the Minions table to have new column town_id that would be of the same type 
+as the id column of towns table. Add new constraint that makes town_id foreign key and references to id column of towns table.
+Submit your create table query in Judge as MySQL run skeleton, run queries & check DB
+
+
+QUERY ->>>
+
+//REMOVES THE AUTO INCREMENT EXTRA
+ALTER TABLE `towns` MODIFY COLUMN `town_id` INT;
+//DROPS THE PRIMARY KEY
+ALTER TABLE `towns` DROP PRIMARY KEY;
+//RENAMES THE FORMER PRIMARY KEY COLUM FRO `town_id` TO `id`
+ALTER TABLE `towns` CHANGE COLUMN `town_id` `id` INT;
+//MAKES THE NEWLY NAMED COULMN `id` A PRIMARY KEY
+ALTER TABLE `towns` ADD PRIMARY KEY(`id`);
+//THEN ADDS THE AUTO_INCREMENT EXTRA TO THE PRIMARY KEY COLUMN
+ALTER TABLE `towns` MODIFY COLUMN `id` INT AUTO_INCREMENT;
+
+ALTER TABLE `minions`
+ADD COLUMN `town_id` INT;
+
+ALTER TABLE `minions`
+ADD FOREIGN KEY(`town_id`) REFERENCES `towns`(`id`);
+
+
+
+
