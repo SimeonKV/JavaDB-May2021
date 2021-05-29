@@ -174,3 +174,129 @@ VALUES(1,'master_force','secretPass',NULL,'2021-02-25',TRUE),
 SELECT * FROM `users`;
 
 
+08. Change Primary Key
+
+Using SQL queries modify table users from the previous task. 
+First remove current primary key then create new primary key that would be combination of fields id and username. 
+The initial primary key name on id is pk_users. Submit your query in Judge as Run skeleton, run queries & check DB.
+
+QUERY ->>>
+
+ALTER TABLE `users` MODIFY `id` INT;
+ALTER TABLE `users` DROP PRIMARY KEY;
+ALTER TABLE `users` ADD PRIMARY KEY(`id`,`username`);
+
+09. Set Default Value of a Field
+Using SQL queries modify table users. Make the default value of last_login_time field to be the current time. 
+Submit your query in Judge as Run skeleton, run queries & check DB.
+
+QUERY ->>>
+
+ALTER TABLE `users` MODIFY `last_login_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+10. Set Unique Field
+
+Using SQL queries modify table users. Remove username field from the primary key so only the field id would be primary key. 
+Now add unique constraint to the username field. The initial primary key name on (id, username) is pk_users.
+Submit your query in Judge as Run skeleton, run queries & check DB.
+
+QUERY ->>>
+
+ALTER TABLE `users`
+DROP PRIMARY KEY,
+ADD CONSTRAINT PRIMARY KEY (`id`),
+ADD CONSTRAINT UNIQUE (`username`);
+
+11. Movies Database
+
+Using SQL queries create Movies database with the following entities:
+•	directors (id, director_name, notes) 
+o	director_name cannot be null
+•	genres (id, genre_name, notes) 
+o	genre_name cannot be null
+•	categories (id, category_name, notes)  
+o	category_name cannot be null
+•	movies (id, title, director_id, copyright_year, length, genre_id, category_id, rating, notes)
+o	title cannot be null
+Set most appropriate data types for each column. Set primary key to each table.
+Populate each table with 5 records. Make sure the columns that are present in 2 tables would be of the same data type.
+Consider which fields are always required and which are optional. Submit your CREATE TABLE and INSERT statements as Run queries & check DB.
+
+QUERY ->>>
+
+CREATE DATABASE `movies`;
+USE `movies`;
+
+CREATE TABLE `directors`(
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`director_name` VARCHAR(25) NOT NULL,
+`notes` TEXT(250) NULL
+);
+
+CREATE TABLE `genres`(
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`genre_name` VARCHAR(25) NOT NULL,
+`notes` TEXT(250) NULL
+);
+
+CREATE TABLE `categories`(
+`id` INT PRIMARY KEY AUTO_INCREMENT,
+`category_name` VARCHAR(25) NOT NULL,
+`notes` TEXT(250) NULL
+);
+
+CREATE TABLE `movies`(
+`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+`title` VARCHAR(25) NOT NULL,
+`director_id` INT UNSIGNED NOT NULL,
+`copyright_year` YEAR NULL,
+`length` DECIMAL(3,2) UNSIGNED NOT NULL,
+`gernre_id` INT UNSIGNED NOT NULL,
+`category_id` INT UNSIGNED NOT NULL,
+`rating` DOUBLE NOT NULL DEFAULT 0,
+`notes` TEXT
+);
+
+INSERT INTO `directors`(`id`,`director_name`,`notes`) 
+VALUES(1,"Jhon Travolta","An actor and a dirctor"),
+(2,"Jimmy Jhon","Unkown director"),
+(3,"Super Mario",NULL),
+(4,"Jhon Doe","Another Jhon Doe"),
+(5,"Alex Alex","He also likes coding");
+
+
+INSERT INTO `genres`(`id`,`genre_name`,`notes`)
+VALUES(1,"Comedy","Commedies are fun !!!"),
+(2,"Horrors","Horros are not for people who get scared easily!"),
+(3,"Cartoons","Who doesn't like cartoons?!?"),
+(4,"Drama","No drama,pls!"),
+(5,"Documentary","Borning");
+
+
+INSERT INTO `categories`(`id`,`category_name`,`notes`)
+VALUES(1,"Cat one",NULL),
+(2,"Cat two",NULL),
+(3,"Cat three",NULL),
+(4,"Cat four",NULL),
+(5,"Cat five",NULL);
+
+
+INSERT INTO `movies`(`id`,`title`,`director_id`,`copyright_year`,`length`,`genre_id`,`category_id`,`rating`,`notes`)
+VALUES(1,"Super Movie",1,2004,2.00,1,1,1,NULL),
+(2,"Scary Movie",2,2005,2.10,2,2,2,NULL),
+(3,"Drama Movie",3,2003,3.00,3,3,3,NULL),
+(4,"Boring Movie",4,2009,1.00,2,4,2,NULL),
+(5,"Last Movie",5,2005,5.00,5,5,5,NULL);
+
+ALTER TABLE `movies` CHANGE COLUMN gernre_id `genre_id` INT UNSIGNED NOT NULL;
+
+
+
+
+
+
+
+
+
+
+
