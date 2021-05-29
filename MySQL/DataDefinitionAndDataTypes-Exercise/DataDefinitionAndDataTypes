@@ -63,6 +63,80 @@ ADD COLUMN `town_id` INT;
 ALTER TABLE `minions`
 ADD FOREIGN KEY(`town_id`) REFERENCES `towns`(`id`);
 
+ALTER TABLE `minions`
+MODIFY COLUMN `town_id` INT NOT NULL;
+
+03.Insert Records in Both Tables
+
+Populate both tables with sample records given in the table below.
+minions		towns
+id	name	age	town_id		id	name
+1	Kevin	22	1		1	Sofia
+2	Bob	15	3		2	Plovdiv
+3	Steward	NULL	2		3	Varna
+
+QUERY ->>>
+
+INSERT INTO towns (id,`name`) VALUES
+(1,'Sofia'),
+(2,'Plovdiv'),
+(3,'Varna');
+
+INSERT INTO minions (id,`name`, age, town_id) VALUES
+(1,'Kevin' , 22, 1),
+(2,'Bob',15, 3),
+(3, 'Steward',NULL, 2);
 
 
+04.Truncate Table Minions
+Delete all the data from the minions table using SQL query.
+Submit your query in Judge as Run skeleton, run queries & check DB.
+
+QUERY ->>>
+
+TRUNCATE TABLE `minions`;
+
+5.Drop All Tables
+Delete all tables from the minions database using SQL query. 
+Submit your query in Judge as Run skeleton, run queries & check DB.
+
+
+QUERY ->>>
+
+DROP TABLE `minions`;
+DROP TABLE `towns`;
+
+06.Create Table People
+
+
+Using SQL query create table "people" with columns:
+•	id – unique number for every person there will be no more than 231-1people. (Auto incremented)
+•	name – full name of the person will be no more than 200 Unicode characters. (Not null)
+•	picture – image with size up to 2 MB. (Allow nulls)
+•	height –  In meters. Real number precise up to 2 digits after floating point. (Allow nulls)
+•	weight –  In kilograms. Real number precise up to 2 digits after floating point. (Allow nulls)
+•	gender – Possible states are m or f. (Not null)
+•	birthdate – (Not null)
+•	biography – detailed biography of the person it can contain max allowed Unicode characters. (Allow nulls)
+Make id primary key. Populate the table with 5 records.  Submit your CREATE and INSERT statements in Judge as Run queries & check DB.
+
+QUERY ->>>
+
+CREATE TABLE people(
+`id` INT AUTO_INCREMENT PRIMARY KEY,
+`name` VARCHAR(200) NOT NULL,
+`picture` BLOB,
+`height` DECIMAL(3,2),
+`weight` DECIMAL(5,2),
+`gender` ENUM('m','f') NOT NULL,
+`birthdate` DATE NOT NULL,
+`biography` TEXT
+);
+
+INSERT INTO `people`(`id`,`name`,`picture`,`height`,`weight`,`gender`,`birthdate`,`biography`)
+VALUES(1,"Maria",NULL,1.73,69.00,'f','1993-02-04',"I am Maria from Bulgaria"),
+(2,"Mario",NULL,1.78,70.14,'m','1991-09-14',"I am Mario from Bulgaria"),
+(3,"Georgi",NULL,1.83,69.00,'m','1994-02-24',"I am Georgi from Bulgaria"),
+(4,"Martina",NULL,1.67,60.10,'f','1993-07-01',"I am Martina from Bulgaria"),
+(5,"Dimitar",NULL,1.79,69.00,'m','1990-12-05',"I am Dimitar from Bulgaria");
 
