@@ -367,6 +367,7 @@ VALUES("Ivan","Ivanov","Ivanov",".NET Developer",3,"2013-02-01",3500.00),
 ("Peter","Pan","Pan","Intern",3,"2016-08-28",599.88);
 
 14. Basic Select All Fields
+
 Use the soft_uni database and first select all records from the towns, then from departments and finally from employees table.
 Use SQL queries and submit them to Judge at once. Submit your query statements as Prepare DB & Run queries.
 
@@ -375,6 +376,67 @@ Query ->>>
 SELECT * FROM towns;
 SELECT * FROM departments;
 SELECT * FROM employees;
+
+15. Basic Select All Fields and Order Them
+
+Modify queries from previous problem by sorting:
+•	towns - alphabetically by name
+•	departments - alphabetically by name
+•	employees - descending by salary
+Submit your query statements as Prepare DB & Run queries.
+
+Query ->>>
+
+SELECT * FROM `towns`
+ORDER BY `name`;
+
+SELECT * FROM `departments`
+ORDER BY `name`;
+
+SELECT * FROM `employees`
+ORDER BY  `salary` DESC;
+
+
+16. Basic Select Some Fields
+
+Modify queries from previous problem to show only some of the columns. For table:
+•	towns – name
+•	departments – name
+•	employees – first_name, last_name, job_title, salary
+Keep the ordering from the previous problem. Submit your query statements as Prepare DB & Run queries.
+
+Query ->>>
+
+SELECT `name` FROM `towns`
+ORDER BY `name`;
+
+SELECT `name` FROM `departments`
+ORDER BY `name`;
+
+SELECT `first_name`,`last_name`,`job_title`,`salary` FROM `employees`
+ORDER BY  `salary` DESC;
+
+17. Increase Employees Salary
+
+Use softuni database and increase the salary of all employees by 10%.
+Then select only salary column from the employees table.
+Submit your query statements as Prepare DB & Run queries.
+
+Query ->>>
+
+UPDATE `employees`
+SET `salary` = `salary` + (`salary` * 0.10);
+
+SELECT `salary` FROM `employees`;
+
+18. Delete All Records
+
+Use SQL query to delete all records from the table with name occupancies.
+Submit your query statements as Run skeleton, run queries & check DB. 
+
+Query ->>>
+
+DELETE FROM `occupancies`;
 
 
 
