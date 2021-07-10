@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+
+    <persistence-unit name="hibernate-code">
+        <properties>
+            <property name = "hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/hibernate_code?createDatabaseIfNotExist=true"/>
+
+            <property name =
+                              "hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name = "hibernate.connection.username" value="root"/>
+            <property name = "hibernate.connection.password" value="1234"/>
+            <property name = "hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
+            <property name = "hibernate.show_sql" value = "true" />
+
+        </properties>
+    </persistence-unit>
+
+
+
+    <persistence-unit name="student-demo">
+        <class>Student.Person</class>
+        <class>Student.Address</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name = "hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/student_demo?createDatabaseIfNotExist=true"/>
+            <property name =
+                              "hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name = "hibernate.connection.username" value="root"/>
+            <property name = "hibernate.connection.password" value="1234"/>
+            <property name = "hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name = "hibernate.hbm2ddl.auto" value="update"/>
+            <property name = "hibernate.show_sql" value = "true" />
+
+        </properties>
+    </persistence-unit>
+</persistence>
