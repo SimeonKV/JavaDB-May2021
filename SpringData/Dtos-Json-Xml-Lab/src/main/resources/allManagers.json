@@ -1,0 +1,36 @@
+[
+  {
+    "subordinates": [
+      {
+        "firstName": "Michka",
+        "lastName": "Micheva"
+      },
+      {
+        "firstName": "Gosho",
+        "lastName": "Goshov"
+      }
+    ],
+    "firstName": "Pesho",
+    "lastName": "Petrov"
+  },
+  {
+    "subordinates": [
+      {
+        "firstName": "Georgi",
+        "lastName": "Georgiev"
+      }
+    ],
+    "firstName": "Gosho",
+    "lastName": "Goshov"
+  },
+  {
+    "subordinates": [
+      {
+        "firstName": "Maria",
+        "lastName": "Mariova"
+      }
+    ],
+    "firstName": "Michka",
+    "lastName": "Micheva"
+  }
+]
