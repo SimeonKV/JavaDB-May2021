@@ -1,8 +1,7 @@
-package salesDatabase;
+package salesDB.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -10,20 +9,21 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private Double quantity;
-
-    @Column(nullable = false,columnDefinition = "DECIMAL(8,2)")
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "product")
-    private Set<Sale> sales;
+    public Product() {
+    }
 
-    public Product(){}
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -47,13 +47,5 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public Set<Sale> getSales() {
-        return sales;
-    }
-
-    public void setSales(Set<Sale> sales) {
-        this.sales = sales;
     }
 }

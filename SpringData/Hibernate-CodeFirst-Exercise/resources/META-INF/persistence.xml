@@ -3,13 +3,15 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
              version="2.0">
 
+    <persistence-unit name="gringotts_db">
 
-    <persistence-unit name="gringotts-deposits">
-        <class>gringottsDatabase.WizardDeposits</class>
+        <class>gringottsDB.entity.WizardDeposit</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
         <properties>
             <property name = "hibernate.connection.url"
                       value="jdbc:mysql://localhost:3306/gringotts_db?createDatabaseIfNotExist=true"/>
+
             <property name =
                               "hibernate.connection.driver_class"
                       value="com.mysql.jdbc.Driver"/>
@@ -17,22 +19,24 @@
             <property name = "hibernate.connection.password" value="1234"/>
             <property name = "hibernate.dialect"
                       value="org.hibernate.dialect.MySQL8Dialect"/>
-            <property name = "hibernate.hbm2ddl.auto" value="update"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
             <property name = "hibernate.show_sql" value = "true" />
 
         </properties>
     </persistence-unit>
 
-
     <persistence-unit name="sales_db">
-        <class>salesDatabase.Customer</class>
-        <class>salesDatabase.Sale</class>
-        <class>salesDatabase.StoreLocation</class>
-        <class>salesDatabase.Product</class>
+
+        <class>salesDB.entities.Customer</class>
+        <class>salesDB.entities.Product</class>
+        <class>salesDB.entities.Sale</class>
+        <class>salesDB.entities.StoreLocation</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
         <properties>
             <property name = "hibernate.connection.url"
                       value="jdbc:mysql://localhost:3306/sales_db?createDatabaseIfNotExist=true"/>
+
             <property name =
                               "hibernate.connection.driver_class"
                       value="com.mysql.jdbc.Driver"/>
@@ -40,9 +44,105 @@
             <property name = "hibernate.connection.password" value="1234"/>
             <property name = "hibernate.dialect"
                       value="org.hibernate.dialect.MySQL8Dialect"/>
-            <property name = "hibernate.hbm2ddl.auto" value="update"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
             <property name = "hibernate.show_sql" value = "true" />
 
         </properties>
     </persistence-unit>
+
+
+    <persistence-unit name="university_db">
+
+        <class>universitySystem.entities.Student</class>
+        <class>universitySystem.entities.Teacher</class>
+        <class>universitySystem.entities.Course</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name = "hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/university_system_db?createDatabaseIfNotExist=true"/>
+
+            <property name =
+                              "hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name = "hibernate.connection.username" value="root"/>
+            <property name = "hibernate.connection.password" value="1234"/>
+            <property name = "hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
+            <property name = "hibernate.show_sql" value = "true" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="hospital_db">
+
+        <class>hospitalDB.entites.Medicament</class>
+        <class>hospitalDB.entites.Diagnose</class>
+        <class>hospitalDB.entites.Patient</class>
+        <class>hospitalDB.entites.Visitation</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name = "hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/hospital_gp_db?createDatabaseIfNotExist=true"/>
+
+            <property name =
+                              "hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name = "hibernate.connection.username" value="root"/>
+            <property name = "hibernate.connection.password" value="1234"/>
+            <property name = "hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
+            <property name = "hibernate.show_sql" value = "true" />
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="bill_payment_db">
+
+        <class>billsPaymentDB.entites.BillingDetail</class>
+        <class>billsPaymentDB.entites.BankAccount</class>
+        <class>billsPaymentDB.entites.CreditCard</class>
+        <class>billsPaymentDB.entites.User</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <property name = "hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/bill_payment_db?createDatabaseIfNotExist=true"/>
+
+            <property name =
+                              "hibernate.connection.driver_class"
+                      value="com.mysql.jdbc.Driver"/>
+            <property name = "hibernate.connection.username" value="root"/>
+            <property name = "hibernate.connection.password" value="1234"/>
+            <property name = "hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name = "hibernate.hbm2ddl.auto" value="create"/>
+            <property name = "hibernate.show_sql" value = "true" />
+
+        </properties>
+    </persistence-unit>
+
+
+<!--    <persistence-unit name="student-demo">-->
+<!--        <class>Student.Person</class>-->
+<!--        <class>Student.Address</class>-->
+<!--        <exclude-unlisted-classes>true</exclude-unlisted-classes>-->
+<!--        <properties>-->
+<!--            <property name = "hibernate.connection.url"-->
+<!--                      value="jdbc:mysql://localhost:3306/student_demo?createDatabaseIfNotExist=true"/>-->
+<!--            <property name =-->
+<!--                              "hibernate.connection.driver_class"-->
+<!--                      value="com.mysql.jdbc.Driver"/>-->
+<!--            <property name = "hibernate.connection.username" value="root"/>-->
+<!--            <property name = "hibernate.connection.password" value="1234"/>-->
+<!--            <property name = "hibernate.dialect"-->
+<!--                      value="org.hibernate.dialect.MySQL8Dialect"/>-->
+<!--            <property name = "hibernate.hbm2ddl.auto" value="update"/>-->
+<!--            <property name = "hibernate.show_sql" value = "true" />-->
+
+<!--        </properties>-->
+<!--    </persistence-unit>-->
 </persistence>

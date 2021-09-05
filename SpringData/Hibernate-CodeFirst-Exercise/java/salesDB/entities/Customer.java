@@ -1,4 +1,4 @@
-package salesDatabase;
+package salesDB.entities;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,20 +9,23 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false,unique = true)
     private String email;
-
     @Column(name = "credit_card_number")
     private String creditCardNumber;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Sale> sales;
 
-    public Customer(){}
+    public Customer() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -46,13 +49,5 @@ public class Customer {
 
     public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
-    }
-
-    public Set<Sale> getSales() {
-        return sales;
-    }
-
-    public void setSales(Set<Sale> sales) {
-        this.sales = sales;
     }
 }

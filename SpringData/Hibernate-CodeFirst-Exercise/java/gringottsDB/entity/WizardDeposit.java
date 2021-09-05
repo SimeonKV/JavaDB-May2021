@@ -1,58 +1,52 @@
-package gringottsDatabase;
+package gringottsDB.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "wizard_deposits",
-uniqueConstraints = {@UniqueConstraint(columnNames = {"first_name","last_name"})})
-public class WizardDeposits {
+@Table(name = "wizard_deposits")
+public class WizardDeposit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "first_name",columnDefinition = "VARCHAR(50)",nullable = false)
+    @Column(name = "first_name",length = 50)
     private String firstName;
-
-    @Column(name = "last_name",columnDefinition = "VARCHAR(50)",nullable = false)
+    @Column(name = "last_name",length = 60,nullable = false)
     private String lastName;
-
-    @Column(columnDefinition = "TEXT",length = 1000)
+    @Column(columnDefinition = "TEXT(1000)")
     private String notes;
-
     @Column(nullable = false)
     private Integer age;
-
-    @Column(name = "magic_wand_creator",columnDefinition = "VARCHAR(100)")
+    @Column(name = "magic_wand_creator",length = 100)
     private String magicWandCreator;
-
     @Column(name = "magic_wand_size")
     private Integer magicWandSize;
-
-    @Column(name = "deposit_group",columnDefinition = "VARCHAR(20)",nullable = false)
+    @Column(name = "depositGroup",length = 20)
     private String depositGroup;
-
-    @Column(name = "deposit_start_date",nullable = false)
+    @Column(name = "deposit_start_date")
     private LocalDateTime depositStartDate;
-
-    @Column(name = "deposit_amount",columnDefinition = "DECIMAL(10,2)",nullable = false)
+    @Column(name = "deposit_amount")
     private BigDecimal depositAmount;
-
-    @Column(name = "deposit_interest",columnDefinition = "DECIMAL(5,2)",nullable = false)
-    private BigDecimal depositInterest;
-
-    @Column(name = "deposit_charge",columnDefinition = "DECIMAL(5,2)",nullable = false)
-    private BigDecimal depositCharge;
-
-    @Column(name = "deposit_expirtion_date",nullable = false)
+    @Column(name = "deposit_interest")
+    private Double depositInterest;
+    @Column(name = "deposit_charge")
+    private Double depositCharge;
+    @Column(name = "deposit_expiration_date")
     private LocalDateTime depositExpirationDate;
-
-    @Column(name = "is_deposit_expired",nullable = false)
+    @Column(name = "isDepodistExpired")
     private Boolean isDepositExpired;
 
-    public WizardDeposits(){};
+    public WizardDeposit() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -126,19 +120,19 @@ public class WizardDeposits {
         this.depositAmount = depositAmount;
     }
 
-    public BigDecimal getDepositInterest() {
+    public Double getDepositInterest() {
         return depositInterest;
     }
 
-    public void setDepositInterest(BigDecimal depositInterest) {
+    public void setDepositInterest(Double depositInterest) {
         this.depositInterest = depositInterest;
     }
 
-    public BigDecimal getDepositCharge() {
+    public Double getDepositCharge() {
         return depositCharge;
     }
 
-    public void setDepositCharge(BigDecimal depositCharge) {
+    public void setDepositCharge(Double depositCharge) {
         this.depositCharge = depositCharge;
     }
 
